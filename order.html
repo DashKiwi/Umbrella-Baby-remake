@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Umbrella Baby – Order</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="logo">Umbrella Baby</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="product.html">Product</a>
+      <a href="order.html">Order</a>
+      <a href="testimonials.html">Testimonials</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="section">
+    <h2>Place Your Order</h2>
+    <form id="order-form" style="max-width: 400px; margin: auto; text-align: left;">
+        <div id="order-success" style="display:none; color:green; font-weight:bold; margin-bottom:15px; text-align:center;">Thank you! Your order has been received.</div>
+        <label for="name">Name:</label><br/>
+        <input type="text" id="name" name="name" required style="width:100%; padding:10px; margin-bottom:10px;"><br/>
+        
+        <label for="email">Email:</label><br/>
+        <input type="email" id="email" name="email" required style="width:100%; padding:10px; margin-bottom:10px;"><br/>
+        
+        <label for="quantity">Quantity:</label><br/>
+        <input type="number" id="quantity" name="quantity" min="1" value="1" required style="width:100%; padding:10px; margin-bottom:10px;"><br/>
+        
+        <label for="address">Shipping Address:</label><br/>
+        <textarea id="address" name="address" rows="4" required style="width:100%; padding:10px; margin-bottom:10px;"></textarea><br/>
+
+        <!-- Payment Method Selector -->
+        <label for="payment-method">Choose Payment Method:</label><br/>
+        <select id="payment-method" name="payment-method" style="width:100%; padding:10px; margin-bottom:20px;">
+        <option value="paypal">PayPal</option>
+        <option value="credit-card">Credit Card (Stripe)</option>
+        <option value="poli">POLi</option>
+        </select>
+
+        <!-- Payment method containers -->
+        <div id="paypal-button-container">
+          <button type="button" id="paypal-pay-button" style="width:100%; background:#ffc439; color:#222; border:none; padding:12px; border-radius:4px; font-size:16px; margin-bottom:10px; cursor:pointer;">Pay with PayPal</button>
+        </div>
+        <div id="stripe-card-container" style="display:none;">
+        <div id="card-element" style="padding:10px; border:1px solid #ccc; border-radius:4px; margin-bottom:10px;">[Card Input Placeholder]</div>
+        <button type="button" id="stripe-pay-button" style="width:100%; background:#635bff; color:#fff; border:none; padding:12px; border-radius:4px; font-size:16px; cursor:pointer;">Pay with Card</button>
+        </div>
+        <div id="poli-button-container" style="display:none;">
+        <button type="button" id="poli-pay-button" style="width:100%; background:#00a2e1; color:#fff; border:none; padding:12px; border-radius:4px; font-size:16px; cursor:pointer;">Pay with POLi</button>
+        </div>
+    </form>
+    </section>
+
+  <footer>
+    &copy; 2025 Umbrella Baby | All rights reserved
+  </footer>
+
+  <script>
+  // Show/hide payment method containers
+  const paymentSelect = document.getElementById('payment-method');
+  const paypalContainer = document.getElementById('paypal-button-container');
+  const stripeContainer = document.getElementById('stripe-card-container');
+  const poliContainer = document.getElementById('poli-button-container');
+
+  paymentSelect.addEventListener('change', function() {
+    paypalContainer.style.display = this.value === 'paypal' ? '' : 'none';
+    stripeContainer.style.display = this.value === 'credit-card' ? '' : 'none';
+    poliContainer.style.display = this.value === 'poli' ? '' : 'none';
+  });
+
+  // Simulate payment actions
+  function showSuccess() {
+    document.getElementById('order-success').style.display = 'block';
+    setTimeout(() => {
+      document.getElementById('order-success').style.display = 'none';
+      document.getElementById('order-form').reset();
+      paymentSelect.dispatchEvent(new Event('change'));
+    }, 3500);
+  }
+
+  document.getElementById('paypal-pay-button').onclick = function(e) {
+    e.preventDefault();
+    if (document.getElementById('order-form').checkValidity()) showSuccess();
+    else document.getElementById('order-form').reportValidity();
+  };
+  document.getElementById('stripe-pay-button').onclick = function(e) {
+    e.preventDefault();
+    if (document.getElementById('order-form').checkValidity()) showSuccess();
+    else document.getElementById('order-form').reportValidity();
+  };
+  document.getElementById('poli-pay-button').onclick = function(e) {
+    e.preventDefault();
+    if (document.getElementById('order-form').checkValidity()) showSuccess();
+    else document.getElementById('order-form').reportValidity();
+  };
+  // Default show PayPal
+  paymentSelect.dispatchEvent(new Event('change'));
+  </script>
+
+</body>
+</html>
