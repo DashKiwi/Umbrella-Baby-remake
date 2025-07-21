@@ -1,136 +1,157 @@
+
+
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background-color: #e6f2ff;
-  color: #333;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background-color: #181818;
+  color: #bbb;
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: block;
+  padding: 10px 10px;
+  background-color: #222;
+  border-bottom: 2px solid #444;
 }
 
 header .logo {
-  font-size: 1.8em;
-  font-weight: 600;
-  color: #278acb;
+  font-size: 2em;
+  font-weight: bold;
+  color: #f77062;
+  text-shadow: 2px 2px 0 #000;
 }
 
 nav a {
-  margin-left: 20px;
-  text-decoration: none;
-  color: #278acb;
-  font-weight: 500;
+  margin: 0 8px;
+  text-decoration: underline;
+  color: #f77062;
+  font-weight: bold;
+  background: #111;
+  padding: 4px 8px;
+  border-radius: 2px;
+  border: 1px dashed #444;
 }
 
 .hero {
-  background: url('https://i.imgur.com/DR7qP3L.jpg') center/cover no-repeat;
-  height: 60vh;
+  background: #222 url('https://i.imgur.com/DR7qP3L.jpg') center/contain repeat-y;
+  height: 40vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  text-align: center;
+  align-items: flex-end;
+  justify-content: left;
+  color: #f77062;
+  text-align: left;
   position: relative;
+  border-bottom: 4px dotted #444;
 }
 
 .hero::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.7);
 }
 
 .hero-content {
   position: relative;
   z-index: 1;
+  padding: 20px;
 }
 
 .hero h1 {
-  font-size: 2.8em;
-  margin-bottom: 10px;
+  font-size: 2em;
+  margin-bottom: 2px;
+  color: #f77062;
+  text-shadow: 1px 1px 0 #000;
 }
 
 .hero p {
-  font-size: 1.2em;
-  margin-bottom: 20px;
+  font-size: 1em;
+  margin-bottom: 8px;
+  color: #bbb;
 }
 
 .btn {
-  background-color: #278acb;
-  color: white;
-  padding: 12px 25px;
-  border: none;
-  border-radius: 30px;
+  background-color: #333;
+  color: #f77062;
+  padding: 8px 12px;
+  border: 2px dashed #f77062;
+  border-radius: 2px;
   font-size: 1em;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.1s;
 }
 
 .btn:hover {
-  background-color: #186ea8;
+  background-color: #111;
+  color: #fff;
 }
 
 .section {
-  padding: 60px 40px;
-  text-align: center;
+  padding: 30px 10px;
+  text-align: left;
+  background: #222;
+  border-top: 2px solid #444;
 }
 
 .section h2 {
-  font-size: 2em;
-  margin-bottom: 30px;
-  color: #278acb;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: #f77062;
+  text-shadow: 1px 1px 0 #000;
 }
 
 .features {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
+  display: block;
+  gap: 10px;
 }
 
 .feature-card {
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-  padding: 20px;
-  width: 250px;
+  background: #181818;
+  border-radius: 2px;
+  box-shadow: none;
+  padding: 8px;
+  width: 100%;
+  margin-bottom: 8px;
+  border: 1px solid #444;
 }
 
 .testimonials {
-  background-color: #f0f8ff;
+  background-color: #181818;
+  color: #f77062;
+  border-top: 2px solid #444;
 }
 
 .testimonial {
-  max-width: 600px;
-  margin: auto;
+  max-width: 100%;
+  margin: 8px 0;
   font-style: italic;
-  color: #444;
+  color: #f77062;
+  background: #222;
+  border-radius: 2px;
+  padding: 8px;
+  border: 1px solid #444;
 }
 
 footer {
-  background-color: #ffffff;
+  background-color: #222;
   text-align: center;
-  padding: 20px;
-  font-size: 0.9em;
-  color: #888;
+  padding: 10px;
+  font-size: 0.8em;
+  color: #444;
+  border-top: 2px solid #444;
 }
 
 @media (max-width: 768px) {
   .features {
-    flex-direction: column;
-    align-items: center;
+    display: block;
+    gap: 4px;
   }
 
   .hero h1 {
-    font-size: 2em;
+    font-size: 1.2em;
   }
 
   .hero p {
-    font-size: 1em;
+    font-size: 0.8em;
   }
 }
