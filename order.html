@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Umbrella Baby – Order</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body style="min-height:100vh; display:flex; flex-direction:column;">
 
@@ -19,43 +20,54 @@
     </nav>
   </header>
 
-  <section class="section">
+  <section class="section order-section-layout">
     <h2>Place Your Order</h2>
-    <form id="order-form" style="max-width: 400px; margin: auto; text-align: left;">
-        <div id="order-success" style="display:none; color:green; font-weight:bold; margin-bottom:15px; text-align:center;">Thank you! Your order has been received.</div>
-        <label for="name">Name:</label><br/>
-        <input type="text" id="name" name="name" required style="width:100%; padding:10px; margin-bottom:10px;"><br/>
-        
-        <label for="email">Email:</label><br/>
-        <input type="email" id="email" name="email" required style="width:100%; padding:10px; margin-bottom:10px;"><br/>
-        
-        <label for="quantity">Quantity:</label><br/>
-        <input type="number" id="quantity" name="quantity" min="1" value="1" required style="width:100%; padding:10px; margin-bottom:10px;"><br/>
-        
-        <label for="address">Shipping Address:</label><br/>
-        <textarea id="address" name="address" rows="4" required style="width:100%; padding:10px; margin-bottom:10px;"></textarea><br/>
+    <div class="order-card">
+      <form id="order-form" class="order-form-grid">
+        <div id="order-success" class="order-success-message" style="display:none;">Thank you! Your order has been received.</div>
 
-        <!-- Payment Method Selector -->
-        <label for="payment-method">Choose Payment Method:</label><br/>
-        <select id="payment-method" name="payment-method" style="width:100%; padding:10px; margin-bottom:20px;">
-        <option value="paypal">PayPal</option>
-        <option value="credit-card">Credit Card (Stripe)</option>
-        <option value="poli">POLi</option>
-        </select>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required placeholder="Your Full Name">
+        </div>
 
-        <!-- Payment method containers -->
-        <div id="paypal-button-container">
-          <button type="button" id="paypal-pay-button" style="width:100%; background:#ffc439; color:#222; border:none; padding:12px; border-radius:4px; font-size:16px; margin-bottom:10px; cursor:pointer;">Pay with PayPal</button>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required placeholder="your.email@example.com">
         </div>
-        <div id="stripe-card-container" style="display:none;">
-        <div id="card-element" style="padding:10px; border:1px solid #ccc; border-radius:4px; margin-bottom:10px;">[Card Input Placeholder]</div>
-        <button type="button" id="stripe-pay-button" style="width:100%; background:#635bff; color:#fff; border:none; padding:12px; border-radius:4px; font-size:16px; cursor:pointer;">Pay with Card</button>
+
+        <div class="form-group">
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" min="1" value="1" required>
         </div>
-        <div id="poli-button-container" style="display:none;">
-        <button type="button" id="poli-pay-button" style="width:100%; background:#00a2e1; color:#fff; border:none; padding:12px; border-radius:4px; font-size:16px; cursor:pointer;">Pay with POLi</button>
+
+        <div class="form-group">
+            <label for="address">Shipping Address:</label>
+            <textarea id="address" name="address" rows="4" required placeholder="Street, City, Postcode, Country"></textarea>
         </div>
-    </form>
-    </section>
+
+        <div class="form-group">
+            <label for="payment-method">Choose Payment Method:</label>
+            <select id="payment-method" name="payment-method">
+                <option value="paypal">PayPal</option>
+                <option value="credit-card">Credit Card (Stripe)</option>
+                <option value="poli">POLi</option>
+            </select>
+        </div>
+
+        <div id="paypal-button-container" class="payment-container">
+            <button type="button" id="paypal-pay-button" class="btn payment-btn paypal-btn">Pay with PayPal</button>
+        </div>
+        <div id="stripe-card-container" class="payment-container" style="display:none;">
+            <div id="card-element" class="stripe-card-element-placeholder">[Card Input Placeholder]</div>
+            <button type="button" id="stripe-pay-button" class="btn payment-btn stripe-btn">Pay with Card</button>
+        </div>
+        <div id="poli-button-container" class="payment-container" style="display:none;">
+            <button type="button" id="poli-pay-button" class="btn payment-btn poli-btn">Pay with POLi</button>
+        </div>
+      </form>
+    </div>
+  </section>
 
   <footer style="margin-top:auto;">
     &copy; 2025 Umbrella Baby | All rights reserved

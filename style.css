@@ -1,3 +1,192 @@
+.order-section-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: calc(100vh - 150px);
+    background-color: #e6f2ff;
+    padding: 60px 20px;
+}
+
+.order-section-layout h2 {
+    font-size: 2.5em;
+    color: #278acb;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.order-card {
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(39, 138, 203, 0.1);
+    padding: 40px;
+    max-width: 600px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.order-form-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    margin-bottom: 0;
+}
+
+.order-form-grid label {
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.order-form-grid input[type="text"],
+.order-form-grid input[type="email"],
+.order-form-grid input[type="number"],
+.order-form-grid textarea,
+.order-form-grid select {
+    width: calc(100% - 30px);
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1em;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    background-color: #f8f8f8;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23278acb%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13%205.7L146.2%20202.7%2018.8%2075.1a17.6%2017.6%200%200%200-25.1%2024.5l143.7%20146.2a17.6%2017.6%200%200%200%2025.1%200l143.7-146.2a17.6%2017.6%200%200%200-12.9-30.2z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 12px;
+}
+
+.order-form-grid input:focus,
+.order-form-grid textarea:focus,
+.order-form-grid select:focus {
+    border-color: #278acb;
+    box-shadow: 0 0 0 3px rgba(39, 138, 203, 0.2);
+    outline: none;
+}
+
+.order-form-grid textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.order-success-message {
+    background-color: #e6ffe6;
+    color: #28a745;
+    border: 1px solid #c3e6cb;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(40, 167, 69, 0.1);
+}
+
+.payment-container {
+    margin-top: 10px;
+}
+
+.payment-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    font-weight: 600;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.paypal-btn {
+    background-color: #ffc439;
+    color: #222 !important;
+}
+
+.paypal-btn:hover {
+    background-color: #e0ac2b;
+    box-shadow: 0 4px 10px rgba(255, 196, 57, 0.3);
+}
+
+.stripe-btn {
+    background-color: #635bff;
+    color: #fff;
+}
+
+.stripe-btn:hover {
+    background-color: #4f46e5;
+    box-shadow: 0 4px 10px rgba(99, 91, 255, 0.3);
+}
+
+.poli-btn {
+    background-color: #00a2e1;
+    color: #fff;
+}
+
+.poli-btn:hover {
+    background-color: #008cc2;
+    box-shadow: 0 4px 10px rgba(0, 162, 225, 0.3);
+}
+
+.stripe-card-element-placeholder {
+    padding: 15px;
+    border: 1px dashed #e0e0e0;
+    border-radius: 10px;
+    background-color: #f8f8f8;
+    color: #888;
+    text-align: center;
+    font-size: 0.9em;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .order-section-layout h2 {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+
+    .order-card {
+        padding: 30px;
+        margin: 0 20px;
+    }
+
+    .order-form-grid input,
+    .order-form-grid textarea,
+    .order-form-grid select,
+    .payment-btn {
+        padding: 12px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .order-section-layout {
+        padding: 40px 15px;
+    }
+
+    .order-section-layout h2 {
+        font-size: 1.8em;
+        margin-bottom: 25px;
+    }
+
+    .order-card {
+        padding: 25px;
+        margin: 0 15px;
+    }
+}
+
 .feedback-prompt {
     background-color: #ffffff;
     border-radius: 15px;
