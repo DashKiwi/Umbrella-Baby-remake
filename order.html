@@ -22,50 +22,81 @@
 
   <section class="section order-section-layout">
     <h2>Place Your Order</h2>
-    <div class="order-card">
-      <form id="order-form" class="order-form-grid">
-        <div id="order-success" class="order-success-message" style="display:none;">Thank you! Your order has been received.</div>
+    <div class="order-content-wrapper">
+      <!-- Left Column: Order Form -->
+      <div class="order-card order-form-column">
+        <form id="order-form" class="order-form-grid">
+          <div id="order-success" class="order-success-message" style="display:none;">Thank you! Your order has been received.</div>
 
-        <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required placeholder="Your Full Name">
+          <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required placeholder="Your Full Name">
+          </div>
+
+          <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+          </div>
+
+          <div class="form-group">
+              <label for="quantity">Quantity:</label>
+              <input type="number" id="quantity" name="quantity" min="1" value="1" required>
+          </div>
+
+          <div class="form-group">
+              <label for="address">Shipping Address:</label>
+              <textarea id="address" name="address" rows="4" required placeholder="Street, City, Postcode, Country"></textarea>
+          </div>
+
+          <div class="form-group">
+              <label for="payment-method">Choose Payment Method:</label>
+              <select id="payment-method" name="payment-method">
+                  <option value="paypal">PayPal</option>
+                  <option value="credit-card">Credit Card (Stripe)</option>
+                  <option value="poli">POLi</option>
+              </select>
+          </div>
+
+          <!-- Payment method containers -->
+          <div id="paypal-button-container" class="payment-container">
+              <button type="button" id="paypal-pay-button" class="btn payment-btn paypal-btn">Pay with PayPal</button>
+          </div>
+          <div id="stripe-card-container" class="payment-container" style="display:none;">
+              <div id="card-element" class="stripe-card-element-placeholder">[Card Input Placeholder]</div>
+              <button type="button" id="stripe-pay-button" class="btn payment-btn stripe-btn">Pay with Card</button>
+          </div>
+          <div id="poli-button-container" class="payment-container" style="display:none;">
+              <button type="button" id="poli-pay-button" class="btn payment-btn poli-btn">Pay with POLi</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Right Column: Price Summary -->
+      <div class="order-card price-summary-column">
+        <h3>Order Summary</h3>
+        <div class="summary-item">
+          <span class="summary-label">Product Price:</span>
+          <span class="summary-value" id="product-price">$20.00</span>
         </div>
 
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+        <div class="summary-item form-group">
+          <label for="shipping-type" class="summary-label">Shipping Type:</label>
+          <select id="shipping-type" name="shipping-type" class="summary-select">
+            <option value="standard">Standard Shipping</option>
+            <option value="rural">Rural Shipping</option>
+          </select>
         </div>
 
-        <div class="form-group">
-            <label for="quantity">Quantity:</label>
-            <input type="number" id="quantity" name="quantity" min="1" value="1" required>
+        <div class="summary-item">
+          <span class="summary-label">Shipping Cost:</span>
+          <span class="summary-value" id="shipping-cost">$5.00</span>
         </div>
 
-        <div class="form-group">
-            <label for="address">Shipping Address:</label>
-            <textarea id="address" name="address" rows="4" required placeholder="Street, City, Postcode, Country"></textarea>
+        <div class="summary-total">
+          <span class="total-label">Total:</span>
+          <span class="total-value" id="total-price">$25.00</span>
         </div>
-
-        <div class="form-group">
-            <label for="payment-method">Choose Payment Method:</label>
-            <select id="payment-method" name="payment-method">
-                <option value="paypal">PayPal</option>
-                <option value="credit-card">Credit Card (Stripe)</option>
-                <option value="poli">POLi</option>
-            </select>
-        </div>
-
-        <div id="paypal-button-container" class="payment-container">
-            <button type="button" id="paypal-pay-button" class="btn payment-btn paypal-btn">Pay with PayPal</button>
-        </div>
-        <div id="stripe-card-container" class="payment-container" style="display:none;">
-            <div id="card-element" class="stripe-card-element-placeholder">[Card Input Placeholder]</div>
-            <button type="button" id="stripe-pay-button" class="btn payment-btn stripe-btn">Pay with Card</button>
-        </div>
-        <div id="poli-button-container" class="payment-container" style="display:none;">
-            <button type="button" id="poli-pay-button" class="btn payment-btn poli-btn">Pay with POLi</button>
-        </div>
-      </form>
+      </div>
     </div>
   </section>
 
@@ -74,46 +105,96 @@
   </footer>
 
   <script>
-  // Show/hide payment method containers
+  // Product and Shipping Constants
+  const SINGLE_PRODUCT_PRICE = 20.00; // Renamed for clarity: this is the price for ONE unit
+  const SHIPPING_COSTS = {
+      standard: 5.00,
+      rural: 5.00 // As requested, both are $5 for now
+  };
+
+  // Get DOM elements
   const paymentSelect = document.getElementById('payment-method');
   const paypalContainer = document.getElementById('paypal-button-container');
   const stripeContainer = document.getElementById('stripe-card-container');
   const poliContainer = document.getElementById('poli-button-container');
+  const orderForm = document.getElementById('order-form');
+  const orderSuccessMessage = document.getElementById('order-success');
 
+  const quantityInput = document.getElementById('quantity'); // Reference to the Quantity input
+  const shippingTypeSelect = document.getElementById('shipping-type');
+  const productPriceDisplay = document.getElementById('product-price');
+  const shippingCostDisplay = document.getElementById('shipping-cost');
+  const totalPriceDisplay = document.getElementById('total-price');
+
+  // Function to update all prices (Product, Shipping, Total)
+  function updatePrices() {
+      // 1. Get the current quantity
+      const quantity = parseInt(quantityInput.value);
+      // Ensure quantity is at least 1, or default to 1 if invalid
+      const safeQuantity = Math.max(1, isNaN(quantity) ? 1 : quantity);
+
+      // 2. Calculate the subtotal based on quantity
+      const subtotalPrice = SINGLE_PRODUCT_PRICE * safeQuantity;
+
+      // 3. Get the selected shipping cost
+      const selectedShippingType = shippingTypeSelect.value;
+      const currentShippingCost = SHIPPING_COSTS[selectedShippingType];
+
+      // 4. Calculate the grand total
+      const currentTotalPrice = subtotalPrice + currentShippingCost;
+
+      // 5. Update the display elements
+      productPriceDisplay.textContent = `$${subtotalPrice.toFixed(2)}`;
+      shippingCostDisplay.textContent = `$${currentShippingCost.toFixed(2)}`;
+      totalPriceDisplay.textContent = `$${currentTotalPrice.toFixed(2)}`;
+  }
+
+  // Initial price update on load
+  document.addEventListener('DOMContentLoaded', () => {
+      updatePrices(); // Call to set initial prices based on default quantity (1)
+      // Trigger change event for payment method to show default (PayPal)
+      paymentSelect.dispatchEvent(new Event('change'));
+  });
+
+  // Event listeners for changes that affect prices
+  shippingTypeSelect.addEventListener('change', updatePrices);
+  quantityInput.addEventListener('input', updatePrices); // Listen for changes in the quantity input
+
+  // Show/hide payment method containers (existing logic, no changes needed here)
   paymentSelect.addEventListener('change', function() {
     paypalContainer.style.display = this.value === 'paypal' ? '' : 'none';
     stripeContainer.style.display = this.value === 'credit-card' ? '' : 'none';
     poliContainer.style.display = this.value === 'poli' ? '' : 'none';
   });
 
-  // Simulate payment actions
+  // Simulate payment actions (existing logic, with updated form reset handling)
   function showSuccess() {
-    document.getElementById('order-success').style.display = 'block';
+    orderSuccessMessage.style.display = 'block';
     setTimeout(() => {
-      document.getElementById('order-success').style.display = 'none';
-      document.getElementById('order-form').reset();
-      paymentSelect.dispatchEvent(new Event('change'));
+      orderSuccessMessage.style.display = 'none';
+      orderForm.reset(); // Reset the form fields to their initial state
+      paymentSelect.dispatchEvent(new Event('change')); // Reset payment method display to default
+      updatePrices(); // Recalculate prices after reset (will show $20.00 product price, $5.00 shipping, $25.00 total)
     }, 3500);
   }
 
+  // Attach click handlers to payment buttons (existing logic, no changes needed here)
   document.getElementById('paypal-pay-button').onclick = function(e) {
     e.preventDefault();
-    if (document.getElementById('order-form').checkValidity()) showSuccess();
-    else document.getElementById('order-form').reportValidity();
+    if (orderForm.checkValidity()) showSuccess();
+    else orderForm.reportValidity();
   };
   document.getElementById('stripe-pay-button').onclick = function(e) {
     e.preventDefault();
-    if (document.getElementById('order-form').checkValidity()) showSuccess();
-    else document.getElementById('order-form').reportValidity();
+    if (orderForm.checkValidity()) showSuccess();
+    else orderForm.reportValidity();
   };
   document.getElementById('poli-pay-button').onclick = function(e) {
     e.preventDefault();
-    if (document.getElementById('order-form').checkValidity()) showSuccess();
-    else document.getElementById('order-form').reportValidity();
+    if (orderForm.checkValidity()) showSuccess();
+    else orderForm.reportValidity();
   };
-  // Default show PayPal
-  paymentSelect.dispatchEvent(new Event('change'));
-  </script>
+</script>
 
 </body>
 </html>
