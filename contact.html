@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Umbrella Baby – Contact</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body style="min-height:100vh; display:flex; flex-direction:column;">
 
@@ -19,20 +20,25 @@
     </nav>
   </header>
 
-  <section class="section">
-    <h2>Contact Us</h2>
-    <form action="#" method="POST" style="max-width: 400px; margin: auto; text-align: left;">
-      <label>Name:</label><br/>
-      <input type="text" name="name" required style="width:100%; padding:10px; margin-bottom:10px;"><br/>
-      
-      <label>Email:</label><br/>
-      <input type="email" name="email" required style="width:100%; padding:10px; margin-bottom:10px;"><br/>
-      
-      <label>Message:</label><br/>
-      <textarea name="message" rows="5" required style="width:100%; padding:10px; margin-bottom:10px;"></textarea><br/>
-      
-      <button class="btn" type="submit">Send Message</button>
-    </form>
+  <section class="section contact-section-layout">
+    <div class="contact-card">
+      <div class="contact-left">
+        <h2>Let's chat.</h2>
+        <div class="contact-info">
+          <div><b>Email:</b> umbrellababy@gmail.com</div>
+          <div><b>Phone Number:</b> 0211804480</div>
+        </div>
+        <p class="contact-description">We'd love to hear from you! Please fill out the form and we'll get back to you as soon as possible.</p>
+      </div>
+      <div class="contact-right">
+        <form action="#" method="POST" class="contact-form">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+          <button class="btn send-message-btn" type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
   </section>
 
   <footer style="margin-top:auto;">
