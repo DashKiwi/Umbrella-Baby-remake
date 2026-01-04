@@ -54,7 +54,7 @@
 .order-form-grid input[type="number"],
 .order-form-grid textarea,
 .order-form-grid select {
-    width: calc(100% - 30px);
+    width: 100%;
     padding: 15px;
     border: 1px solid #e0e0e0;
     border-radius: 10px;
@@ -66,6 +66,9 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+}
+
+.order-form-grid select {
     background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23278acb%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13%205.7L146.2%20202.7%2018.8%2075.1a17.6%2017.6%200%200%200-25.1%2024.5l143.7%20146.2a17.6%2017.6%200%200%200%2025.1%200l143.7-146.2a17.6%2017.6%200%200%200-12.9-30.2z%22%2F%3E%3C%2Fsvg%3E');
     background-repeat: no-repeat;
     background-position: right 15px center;
@@ -95,6 +98,18 @@
     font-weight: bold;
     text-align: center;
     box-shadow: 0 2px 5px rgba(40, 167, 69, 0.1);
+}
+
+.order-error-message {
+    background-color: #ffe6e6;
+    color: #dc3545;
+    border: 1px solid #f5c6cb;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(220, 53, 69, 0.1);
 }
 
 .payment-container {
@@ -139,7 +154,7 @@
 }
 
 .summary-select {
-    width: calc(100% - 30px);
+    width: 100%;
     padding: 15px;
     border: 1px solid #e0e0e0;
     border-radius: 10px;
@@ -185,14 +200,9 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.paypal-btn {
-    background-color: #ffc439;
-    color: #222 !important;
-}
-
-.paypal-btn:hover {
-    background-color: #e0ac2b;
-    box-shadow: 0 4px 10px rgba(255, 196, 57, 0.3);
+.payment-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
 .stripe-btn {
@@ -200,7 +210,7 @@
     color: #fff;
 }
 
-.stripe-btn:hover {
+.stripe-btn:hover:not(:disabled) {
     background-color: #4f46e5;
     box-shadow: 0 4px 10px rgba(99, 91, 255, 0.3);
 }
@@ -210,24 +220,21 @@
     color: #fff;
 }
 
-.poli-btn:hover {
+.poli-btn:hover:not(:disabled) {
     background-color: #008cc2;
     box-shadow: 0 4px 10px rgba(0, 162, 225, 0.3);
 }
 
-.stripe-card-element-placeholder {
+#card-element {
     padding: 15px;
-    border: 1px dashed #e0e0e0;
+    border: 1px solid #e0e0e0;
     border-radius: 10px;
-    background-color: #f8f8f8;
-    color: #888;
-    text-align: center;
-    font-size: 0.9em;
-    min-height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: #fff;
     margin-bottom: 10px;
+}
+
+#paypal-button-container {
+    min-height: 50px;
 }
 
 @media (min-width: 769px) {
