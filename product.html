@@ -4,7 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Umbrella Baby – Product</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="base.css" />
+  <link rel="stylesheet" href="product.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -19,62 +21,70 @@
     </nav>
   </header>
 
-  <section class="section" style="padding: 60px 0; background: #f8fbff;">
-    <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 40px; max-width: 900px; margin: auto; background: #fff; border-radius: 18px; box-shadow: 0 4px 16px rgba(39,138,203,0.07); padding: 40px 20px;">
-      <div style="flex: 1 1 320px; min-width: 260px; text-align: center;">
-        <img src="Pictures/umbrella06.gif" alt="Umbrella Baby Product" style="max-width: 100%; border-radius: 14px; box-shadow: 0 2px 8px rgba(39,138,203,0.10); margin-bottom: 18px;">
-        <div style="font-size: 1.1em; color: #888; margin-top: 8px;">Actual product photo</div>
+  <section class="section product-section">
+    <div class="product-container">
+      <div class="product-image-container">
+        <img src="Pictures/umbrella06.gif" alt="Umbrella Baby Product" class="product-image">
+        <div class="product-caption">Actual product photo</div>
       </div>
-      <div style="flex: 2 1 340px; min-width: 260px; text-align: left;">
-        <h2 style="color: #278acb; font-size: 2.2em; margin-bottom: 10px;">Umbrella Baby Sun & Rain Cover</h2>
-        <div style="font-size: 1.2em; color: #186ea8; margin-bottom: 18px; font-weight: 500;">Protect your little one, whatever the weather.</div>
-        <ul style="list-style: none; padding: 0; margin-bottom: 28px;">
-          <li style="margin-bottom: 14px;"><span style="font-size:1.3em;">☀️</span> <b>UV Protection:</b> Blocks harmful UV rays with certified fabric.</li>
-          <li style="margin-bottom: 14px;"><span style="font-size:1.3em;">🌧️</span> <b>All-Weather Use:</b> Rain or shine, keeps your baby safe and dry.</li>
-          <li style="margin-bottom: 14px;"><span style="font-size:1.3em;">🧩</span> <b>Universal Fit:</b> Compatible with most prams and strollers.</li>
+      <div class="product-details">
+        <h2 class="product-title">Umbrella Baby Sun & Rain Cover</h2>
+        <div class="product-subtitle">Protect your little one, whatever the weather.</div>
+        <ul class="product-features">
+          <li><span>☀️</span> <b>UV Protection:</b> Blocks harmful UV rays with certified fabric.</li>
+          <li><span>🌧️</span> <b>All-Weather Use:</b> Rain or shine, keeps your baby safe and dry.</li>
+          <li><span>🧩</span> <b>Universal Fit:</b> Compatible with most prams and strollers.</li>
         </ul>
-        <div style="font-size: 1.1em; color: #444; margin-bottom: 30px;">Perfect for walks, park outings, or backyard naps. Easy to attach, lightweight, and stylish for every family adventure.</div>
-        <button class="btn" style="font-size:1.3em; padding: 22px 60px; box-shadow: 0 2px 8px rgba(39,138,203,0.10);" onclick="location.href='order.html'">Order Now</button>
+        <div class="product-description">
+          Perfect for walks, park outings, or backyard naps. Easy to attach, lightweight, and stylish for every family adventure.
+        </div>
+        <button class="btn product-order-btn" onclick="location.href='order.html'">Order Now</button>
       </div>
     </div>
   </section>
 
   <!-- How It Works Section -->
-  <section class="section" style="background: #fff;">
-    <h2 style="color:#278acb;">How It Works</h2>
-    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:30px; max-width:900px; margin:auto;">
-      <div style="flex:1 1 200px; min-width:180px; background:#f8fbff; border-radius:12px; padding:24px; margin:10px;">
-        <img src="Pictures/umbrella01.jpg" alt="Step 1" style="width:100%; border-radius:8px; margin-bottom:10px;">
+  <section class="section how-it-works-section">
+    <h2 class="how-it-works-title">How It Works</h2>
+    <div class="steps-container">
+      <div class="step-card">
+        <img src="Pictures/umbrella01.jpg" alt="Step 1" class="step-image">
         <b>1. Attach</b><br>Secure to your pram or stroller in seconds.
       </div>
-      <div style="flex:1 1 200px; min-width:180px; background:#f8fbff; border-radius:12px; padding:24px; margin:10px;">
-        <img src="Pictures/umbrella02.jpg" alt="Step 2" style="width:100%; border-radius:8px; margin-bottom:10px;">
+      <div class="step-card">
+        <img src="Pictures/umbrella02.jpg" alt="Step 2" class="step-image">
         <b>2. Adjust</b><br>Position for optimal sun or rain protection.
       </div>
-      <div style="flex:1 1 200px; min-width:180px; background:#f8fbff; border-radius:12px; padding:24px; margin:10px;">
-        <img src="Pictures/umbrella03.jpg" alt="Step 3" style="width:100%; border-radius:8px; margin-bottom:10px;">
+      <div class="step-card">
+        <img src="Pictures/umbrella03.jpg" alt="Step 3" class="step-image">
         <b>3. Enjoy</b><br>Relax knowing your baby is safe and comfy!
       </div>
     </div>
   </section>
 
   <!-- Gallery Section -->
-  <section class="section" style="background: #e6f2ff;">
-    <h2 style="color:#278acb;">Gallery</h2>
-    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:18px; max-width:900px; margin:auto;">
-      <img src="Pictures/umbrella13.jpg" alt="Gallery 1 product photo" style="width:180px; border-radius:10px; box-shadow:0 2px 8px rgba(39,138,203,0.10);">
-      <img src="Pictures/umbrella04.jpg" alt="Gallery 2 product photo" style="width:180px; border-radius:10px; box-shadow:0 2px 8px rgba(39,138,203,0.10);">
-      <img src="Pictures/umbrella05.jpg" alt="Gallery 3 product photo" style="width:180px; border-radius:10px; box-shadow:0 2px 8px rgba(39,138,203,0.10);">
-      <img src="Pictures/umbrella06.gif" alt="Gallery 4 product photo" style="width:180px; border-radius:10px; box-shadow:0 2px 8px rgba(39,138,203,0.10);">
+  <section class="section gallery-section">
+    <h2 class="gallery-title">Gallery</h2>
+    <div class="gallery-container">
+      <img src="Pictures/umbrella13.jpg" alt="Gallery 1 product photo" class="gallery-image">
+      <img src="Pictures/umbrella04.jpg" alt="Gallery 2 product photo" class="gallery-image">
+      <img src="Pictures/umbrella05.jpg" alt="Gallery 3 product photo" class="gallery-image">
+      <img src="Pictures/umbrella06.gif" alt="Gallery 4 product photo" class="gallery-image">
     </div>
   </section>
 
   <!-- Customer Reviews Preview -->
-  <section class="section testimonials" style="background:#f0f8ff;">
-    <h2 style="color:#278acb;">What Parents Say</h2>
-    <div class="testimonial" style="margin-bottom:18px;">“Absolutely love it! My baby stays dry and cool, and it fits our stroller perfectly.”<br><span style="color:#278acb; font-weight:500;">– Emily R.</span></div>
-    <div class="testimonial" style="margin-bottom:18px;">“Super easy to use and looks great. We get compliments everywhere!”<br><span style="color:#278acb; font-weight:500;">– James T.</span></div>
-    <a href="testimonials.html" class="btn" style="background:#278acb; color:#fff;">Read More Reviews</a>
+  <section class="section product-reviews-section">
+    <h2 class="product-reviews-title">What Parents Say</h2>
+    <div class="testimonial product-review">
+      "Absolutely love it! My baby stays dry and cool, and it fits our stroller perfectly."<br>
+      <span class="review-author">– Emily R.</span>
+    </div>
+    <div class="testimonial product-review">
+      "Super easy to use and looks great. We get compliments everywhere!"<br>
+      <span class="review-author">– James T.</span>
+    </div>
+    <a href="testimonials.html" class="btn reviews-link-btn">Read More Reviews</a>
   </section>
 
   <footer>
